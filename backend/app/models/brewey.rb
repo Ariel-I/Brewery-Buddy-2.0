@@ -1,0 +1,2 @@
+class Brewey < ApplicationRecord
+end
