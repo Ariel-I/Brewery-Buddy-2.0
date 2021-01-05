@@ -1,3 +1,3 @@
 class Brewery < ApplicationRecord
-    has_many :reviews
+    has_many :items
 end
