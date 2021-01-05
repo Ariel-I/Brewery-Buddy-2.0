@@ -3,9 +3,9 @@ class BreweriesController < ApplicationController
 
   # GET /breweries
   def index
-    @breweries = Brewery.all
+    breweries = Brewery.all
 
-    render json: @breweries
+    render json: breweries
   end
 
   # GET /breweries/1
