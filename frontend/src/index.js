@@ -1,10 +1,24 @@
-const BASE_URL = 'http://localhost:3000'
+//const BASE_URL = 'http://localhost:3000'
 
-window.addEventListener("DOMContentLoaded", () => {
+//window.addEventListener("DOMContentLoaded", () => {
+//    document.getElementById('brewery-form').addEventListener('click', displayBreweryForm)
+//    document.getElementById('brewery').addEventListener('click', getBreweries)
+//    getBreweries()
+//})
+
+const apiService = new ApiService()
+let main = document.getElementById('main')
+
+const init = () => {
+    bindEventListeners()
+    getBreweries()
+}
+
+function bindEventListeners() {
     document.getElementById('brewery-form').addEventListener('click', displayBreweryForm)
     document.getElementById('brewery').addEventListener('click', getBreweries)
-    getBreweries()
-})
+}
+
 
 function displayBreweryForm() {
     let formDiv = document.querySelector("#new-brewery-form")
@@ -113,3 +127,5 @@ function removeBrewery(e) {
         getBreweries()
     })
 }
+
+init()
