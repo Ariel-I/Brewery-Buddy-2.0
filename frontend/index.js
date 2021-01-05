@@ -93,6 +93,22 @@ function displayBrewery(e) {
             <h2>${brew.name}</h2>
             <h4> ${brew.location} </h4>
             <hr>
+            <button id="delete-brewery" data-id="${brew.id}">Delete</button>
         `
+        document.getElementById('delete-brewery').addEventListener('click', removeBrewery)
+    })
+}
+
+function removeBrewery(e) {
+    let configObj = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    }
+    fetch(BASE_URL + `/breweries/${e.target.dataset.id}`, configObj)
+    .then(() => {
+        getBreweries()
     })
 }
