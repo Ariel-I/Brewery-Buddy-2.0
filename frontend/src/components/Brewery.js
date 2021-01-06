@@ -3,6 +3,9 @@ class Brewery {
         this.id = data.id
         this.name = data.name 
         this.location = data.location
+        this.description = data.description
+        this.outdoor_dining = data.outdoor_dining
+        this.animal_friendly = data.animal_friendly
         this.items = data.items
     }
     render() {
@@ -17,8 +20,11 @@ class Brewery {
     renderBrewery() {
         return `
         <h2>${this.name}</h2>
-        <h4> ${this.location} </h4>
+        <h4>${this.location}</h4>
         <hr>
+        <p>${this.description}</p>
+        <p>${this.outdoor_dining ? "Yes" : "No"}</p>
+        <p>${this.animal_friendly ? "Yes" : "No"}</p>
         <button id="delete-brewery" data-id="${this.id}">Delete</button>
     `
     }
