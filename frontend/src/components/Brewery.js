@@ -13,4 +13,13 @@ class Brewery {
         </li>
         `
     }
+
+    renderBrewery() {
+        return `
+        <h2>${this.name}</h2>
+        <h4> ${this.location} </h4>
+        <hr>
+        <button id="delete-brewery" data-id="${this.id}">Delete</button>
+    `
+    }
 }
