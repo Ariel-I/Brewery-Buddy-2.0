@@ -93,7 +93,7 @@ function attachClicksToLinks() {
 async function displayBrewery(e) {
     console.log(e.target)
     let id = e.target.dataset.id 
-    const data = await apiService.fetchBreweries(id)
+    const data = await apiService.fetchBrewery(id) 
     const brewery = new Brewery(data)
     main.innerHTML = brewery.renderBrewery()
     document.getElementById('delete-brewery').addEventListener('click', removeBrewery)
