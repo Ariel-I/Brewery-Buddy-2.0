@@ -18,6 +18,8 @@ async function renderItems() {
         const newItem = new Item(item)
         main.innerHTML += newItem.render()
     })
+    //document.getElementById('delete-item').addEventListener('click', removeItem)
+
     //attachClicksToItems()
 }
 
@@ -103,11 +105,11 @@ async function createItem(e) {
     let item = {
         brewery_id: e.target.querySelector("#brewery_id").value,
         beverage: e.target.querySelector("#beverage").value,
-        food: e.target.querySelector("#food")
+        food: e.target.querySelector("#food").value
     }
     let data = await apiService.fetchCreateItem(item)
     let newItem = new Item(data)
-    main.innerHTML += newItem.render() //not right
+    main.innerHTML += newItem.render() 
 
 }
 
@@ -127,22 +129,32 @@ async function displayBrewery(e) {
         brewery.items.map(item => 
            main.innerHTML += 
            `
-           <h4> Beers and Grub: </h4>
            <p>Beverages: ${item.beverage}</p>
            <p>Food: ${item.food}</p>
+           <button id="delete-item" data-id="${item.id}">Delete Item</button>
            `
            //<button id="create-item" data-id="${item.id}">Add Item</button>
-           //<button id="delete-item" data-id="${item.id}">Delete item</button>
-           
+          
+
        )
     document.getElementById('item-form').addEventListener('click', () => displayItemForm(id))   
     clearForm()    
     document.getElementById('delete-brewery').addEventListener('click', removeBrewery)
+    document.getElementById('delete-item').addEventListener('click', removeItem)
+
 }
 
 async function removeBrewery(e) {
     let id = e.target.dataset.id
     const data = await apiService.fetchRemoveBrewery(id)
+    .then(data => {
+        renderBreweries()
+    })
+}
+
+async function removeItem(e) {
+    let id = e.target.dataset.id 
+    const data = await apiService.fetchRemoveItem(id)
     .then(data => {
         renderBreweries()
     })

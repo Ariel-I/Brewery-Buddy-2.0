@@ -9,6 +9,9 @@ class Item {
         return `
         <p>Beverage: ${this.beverage}</p>
         <p>Food: ${this.food}</p>
+
+        <button id="delete-item" data-id="${this.id}">Delete item</button>
         `
+        
     }
 }

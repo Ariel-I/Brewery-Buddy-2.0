@@ -41,7 +41,7 @@ class ApiService {
     }
 
     async fetchItems() {
-        let resp = await fetch(this.baseURL + '/items/')
+        let resp = await fetch(this.baseURL + '/items')
         let data = await resp.json()
         return data 
     }
@@ -58,6 +58,17 @@ class ApiService {
         let resp = await fetch(this.baseURL + '/items', configObj)
         let data = await resp.json()
         return data 
+    }
+
+    async fetchRemoveItem(id) {
+        let configObj = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        let resp = await fetch(this.baseURL + `/items/${id}`, configObj)
     }
 
 }
