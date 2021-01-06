@@ -28,4 +28,16 @@ class ApiService {
         let data = await resp.json()
         return data 
     }
+
+    async fetchRemoveBrewery(id) {
+        let configObj = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        let resp = await fetch(this.baseURL + `/breweries/${id}`, configObj)
+    }
+
 }
