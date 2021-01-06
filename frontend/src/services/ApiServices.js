@@ -10,12 +10,7 @@ class ApiService {
         
         .then(breweries => {
             breweries.map(brewery => {
-                main.innerHTML += `
-                <li>
-                    <a href="#" data-id="${brewery.id}">${brewery.name}</a>
-                    - ${brewery.location}
-                </li>
-                `
+                main.innerHTML += 
             })
         attachClicksToLinks()
         })
