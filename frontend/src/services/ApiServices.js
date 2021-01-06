@@ -15,4 +15,17 @@ class ApiService {
         return data 
     }
 
+    async fetchCreateBrewery(breweryData) {
+        let configObj = {
+            method: 'POST',
+            body: JSON.stringify(breweryData),
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        let resp = await fetch(this.baseURL + '/breweries', configObj)
+        let data = await resp.json()
+        return data 
+    }
 }
