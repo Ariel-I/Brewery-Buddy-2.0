@@ -26,9 +26,15 @@ function displayBreweryForm() {
     let html = `
         <form> 
             <label>Name:</label>
-            <input type="text" id="name">
+            <input type="text" id="name"><br>
             <label>Location:</label>
-            <input type="text" id="location">
+            <input type="text" id="location"><br>
+            <label>Description:</label>
+            <input type="text" id="description"><br>
+            <label>Outdoor Dining</label>
+            <input type="checkbox" id="outdoor-dining">
+            <label>Animal Friendly:</label>
+            <input type="checkbox" id="animal-friendly">
             <input type="submit">
         </form>
     `
