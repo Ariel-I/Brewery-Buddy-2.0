@@ -61,7 +61,7 @@ async function createBrewery(e) {
     let data = await apiService.fetchCreateBrewery(brewery)
     let newBrewery = new Brewery(data)
     main.innerHTML += newBrewery.render()
-    
+
     attachClicksToLinks()
     clearForm()
 }
@@ -84,17 +84,11 @@ async function displayBrewery(e) {
     document.getElementById('delete-brewery').addEventListener('click', removeBrewery)
 }
 
-function removeBrewery(e) {
-    let configObj = {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-    }
-    fetch(BASE_URL + `/breweries/${e.target.dataset.id}`, configObj)
-    .then(() => {
-        getBreweries()
+async function removeBrewery(e) {
+    let id = e.target.dataset.id
+    const data = await apiService.fetchRemoveBrewery(id)
+    .then(data => {
+        renderBreweries()
     })
 }
 
