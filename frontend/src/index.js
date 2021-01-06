@@ -32,15 +32,17 @@ async function renderBreweries() {
     attachClicksToLinks() 
 }
 
-function displayItemForm() {
+function displayItemForm(id) {
     let itemDiv = document.querySelector("#new-item-form")
     let html = `
         <form>
+        <input type="hidden" id="brewery_id" value="${id}">
         <label>Beverage:</label>
         <input type="text" id="beverage">
         <label>Food:</label>
         <input type="text" id="food">
         <input type="submit">
+        </form>
     `
     itemDiv.innerHTML = html
     document.querySelector('form').addEventListener('submit', createItem)
@@ -99,6 +101,7 @@ async function createItem(e) {
     e.preventDefault()
     let main = document.getElementById('main')
     let item = {
+        brewery_id: e.target.querySelector("#brewery_id").value,
         beverage: e.target.querySelector("#beverage").value,
         food: e.target.querySelector("#food")
     }
@@ -133,7 +136,7 @@ async function displayBrewery(e) {
            //<button id="delete-item" data-id="${item.id}">Delete item</button>
            
        )
-
+           
     document.getElementById('delete-brewery').addEventListener('click', removeBrewery)
 }
 
