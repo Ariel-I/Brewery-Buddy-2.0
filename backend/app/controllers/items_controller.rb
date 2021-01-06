@@ -3,13 +3,14 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    @items = Item.all
+    items = Item.all
 
-    render json: @items
+    render json: items
   end
 
   # GET /items/1
   def show
+    #item = Item.find_by(id: params[:id])
     render json: @item
   end
 
@@ -46,6 +47,6 @@ class ItemsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def item_params
-      params.require(:item).permit(:beverage, :food, :brewery_id)
+      params.require(:item).permit(:beverage, :food)
     end
 end
