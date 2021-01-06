@@ -3,16 +3,9 @@ class ApiService {
         this.baseURL = 'http://localhost:3000'
     }
 
-    getBreweries() {
-        main.innerHTML = ""
-        //fetch(BASE_URL + '/breweries')
-        //.then(resp => resp.json())
-        
-        .then(breweries => {
-            breweries.map(brewery => {
-                main.innerHTML += 
-            })
-        attachClicksToLinks()
-        })
+    async fetchBreweries() {
+        let resp = await fetch(this.baseURL + '/breweries')
+        let data = await resp.json()
+        return data 
     }
 }
