@@ -18,6 +18,7 @@ async function renderItems() {
         const newItem = new Item(item)
         main.innerHTML += newItem.breweryItems
     })
+    //attachClicksToItems()
 }
 
 
@@ -84,7 +85,7 @@ function attachClicksToLinks() {
         brewery.addEventListener('click', displayBrewery)
     })
 }
-
+  
 async function displayBrewery(e) {
     console.log(e.target)
     let id = e.target.dataset.id 
@@ -92,10 +93,14 @@ async function displayBrewery(e) {
     const brewery = new Brewery(data)
     main.innerHTML = brewery.renderBrewery()
         brewery.items.map(item => 
-           main.innerHTML += item.breweryItems()
+           main.innerHTML += 
            `
+           <h4> Beers and Grub: </h4>
            <p>${item.beverage}</p>
            <p>${item.food}</p>
+
+           <button id="create-item" data-id="${item.id}">Add Item</button>
+           <button id="delete-item" data-id="${item.id}">Delete item</button>
            `
        )
 
