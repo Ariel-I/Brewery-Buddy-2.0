@@ -1,11 +1,3 @@
-//const BASE_URL = 'http://localhost:3000'
-
-//window.addEventListener("DOMContentLoaded", () => {
-//    document.getElementById('brewery-form').addEventListener('click', displayBreweryForm)
-//    document.getElementById('brewery').addEventListener('click', getBreweries)
-//    getBreweries()
-//})
-
 const apiService = new ApiService()
 let main = document.getElementById('main')
 
@@ -19,7 +11,6 @@ function bindEventListeners() {
     document.getElementById('brewery').addEventListener('click', renderBreweries)
 }
 
-
 async function renderBreweries() {
     const breweries = await apiService.fetchBreweries()
     main.innerHTML = ""
@@ -29,7 +20,6 @@ async function renderBreweries() {
     })
     attachClicksToLinks() 
 }
-
 
 function displayBreweryForm() {
     let formDiv = document.querySelector("#new-brewery-form")
@@ -65,8 +55,6 @@ async function createBrewery(e) {
     attachClicksToLinks()
     clearForm()
 }
-
-
 
 function attachClicksToLinks() {
     const brews = document.querySelectorAll('li a')
