@@ -1,4 +1,4 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :brewery_id
+  attributes :id, :beverage, :food, :brewery_id
   belongs_to :brewery
 end
