@@ -11,11 +11,22 @@ class Brewery {
     }
     render() {
         return `
-        <li>
-            <a href="#" data-id="${this.id}">${this.name}</a>
-            - ${this.location} - ${this.description}
-        </li>
+        <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="${this.image_url}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">${this.name}</h5>
+          <p class="card-text">${this.description}</p>
+          <a href="#" class="btn btn-primary" data-id="${this.id}">View</a>
+        </div>
+        </div><br>
         `
+        
+    // `
+    //  <li>
+    //    <a href="#" data-id="${this.id}">${this.name}</a>
+    //    - ${this.location} - ${this.description}
+    //  </li>
+    //  `
     }
 
     renderBrewery() {
@@ -27,7 +38,7 @@ class Brewery {
         <p>Outdoor Dinig Available?: ${this.outdoor_dining ? "No" : "Yes"}</p>
         <p>Animal Friendly?: ${this.animal_friendly ? "No" : "Yes"}</p>
 
-        <p> Beers: ${this.items} </p>
+        <p> Beers: ${this.items.beverage} </p>
 
         <button id="delete-brewery" data-id="${this.id}">Delete</button>
     `

@@ -31,7 +31,8 @@ function displayBreweryForm() {
             <input type="text" id="location"><br>
             <label>Description:</label>
             <input type="text" id="description"><br>
-
+            <label>Image URL</label>
+            <input type="text" id="image_url"><br>
             <label>Outdoor Dining</label>
             <input type="checkbox" id="outdoor-dining"><br>
             <label>Animal Friendly</label>
@@ -55,6 +56,7 @@ async function createBrewery(e) {
         name: e.target.querySelector("#name").value,
         location: e.target.querySelector("#location").value,
         description: e.target.querySelector("#description").value,
+        image_url: e.target.querySelector("#image_url").value,
         outdoor_dining: e.target.querySelector("#outdoor-dining").checked,
         animal_friendly: e.target.querySelector("#animal-friendly").checked
     }
@@ -67,7 +69,7 @@ async function createBrewery(e) {
 }
 
 function attachClicksToLinks() {
-    const brews = document.querySelectorAll('li a')
+    const brews = document.querySelectorAll('.card-body a')
     brews.forEach(brewery => {
         brewery.addEventListener('click', displayBrewery)
     })
