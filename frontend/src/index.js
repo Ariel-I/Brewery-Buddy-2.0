@@ -51,34 +51,19 @@ function clearForm() {
     formDiv.innerHTML = ""
 }
 
-function createBrewery(e) {
+async function createBrewery(e) {
     e.preventDefault()
     let main = document.getElementById('main')
     let brewery = { 
         name: e.target.querySelector("#name").value,
         location: e.target.querySelector("#location").value
     }
-    let configObj = {
-        method: 'POST',
-        body: JSON.stringify(brewery),
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-    }
-
-    fetch(BASE_URL + '/breweries', configObj)
-    .then(resp => resp.json())
-    .then(brewery => {
-        main.innerHTML += `
-        <li>
-            <a href="#" data-id="${brewery.id}">${brewery.name}</a>
-            - ${brewery.location}
-        </li>
-        `
-        attachClicksToLinks()
-        clearForm()
-    })
+    let data = await apiService.fetchCreateBrewery(brewery)
+    let newBrewery = new Brewery(data)
+    main.innerHTML += newBrewery.render()
+    
+    attachClicksToLinks()
+    clearForm()
 }
 
 
