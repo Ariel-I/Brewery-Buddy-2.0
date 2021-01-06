@@ -4,6 +4,7 @@ class Brewery {
         this.name = data.name 
         this.location = data.location
         this.description = data.description
+        this.image_url = data.image_url
         this.outdoor_dining = data.outdoor_dining
         this.animal_friendly = data.animal_friendly
         this.items = data.items
@@ -25,6 +26,9 @@ class Brewery {
         <p>Description: ${this.description}</p>
         <p>Outdoor Dinig Available?: ${this.outdoor_dining ? "No" : "Yes"}</p>
         <p>Animal Friendly?: ${this.animal_friendly ? "No" : "Yes"}</p>
+
+        <p> Beers: ${this.items} </p>
+
         <button id="delete-brewery" data-id="${this.id}">Delete</button>
     `
     }

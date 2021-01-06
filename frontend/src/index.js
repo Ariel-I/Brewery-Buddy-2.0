@@ -31,10 +31,11 @@ function displayBreweryForm() {
             <input type="text" id="location"><br>
             <label>Description:</label>
             <input type="text" id="description"><br>
+
             <label>Outdoor Dining</label>
-            <input type="checkbox" id="outdoor-dining">
-            <label>Animal Friendly:</label>
-            <input type="checkbox" id="animal-friendly">
+            <input type="checkbox" id="outdoor-dining"><br>
+            <label>Animal Friendly</label>
+            <input type="checkbox" id="animal-friendly"><br>
             <input type="submit">
         </form>
     `
