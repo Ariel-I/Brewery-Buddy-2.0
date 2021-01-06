@@ -12,7 +12,7 @@ class Brewery {
         return `
         <li>
             <a href="#" data-id="${this.id}">${this.name}</a>
-            - ${this.location}
+            - ${this.location} - ${this.description}
         </li>
         `
     }

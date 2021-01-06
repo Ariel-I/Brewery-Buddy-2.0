@@ -52,7 +52,10 @@ async function createBrewery(e) {
     let main = document.getElementById('main')
     let brewery = { 
         name: e.target.querySelector("#name").value,
-        location: e.target.querySelector("#location").value
+        location: e.target.querySelector("#location").value,
+        description: e.target.querySelector("#description").value,
+        outdoor_dining: e.target.querySelector("#outdoor-dining").checked,
+        animal_friendly: e.target.querySelector("#animal-friendly").checked
     }
     let data = await apiService.fetchCreateBrewery(brewery)
     let newBrewery = new Brewery(data)
