@@ -5,12 +5,13 @@ class BreweriesController < ApplicationController
   def index
     breweries = Brewery.all
 
-    render json: breweries
+    render json: breweries.to_json(include: [:items])
   end
 
   # GET /breweries/1
   def show
-    render json: @brewery
+    brewery = Brewery.find_by(id: params[:id])
+    render json: brewery.to_json(include: [:items]) 
   end
 
   # POST /breweries
