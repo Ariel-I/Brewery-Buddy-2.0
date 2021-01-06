@@ -27,6 +27,7 @@ async function renderBreweries() {
         const newBrewery = new Brewery(brewery)
         main.innerHTML += newBrewery.render()
     })
+    attachClicksToLinks() 
 }
 
 
@@ -89,22 +90,13 @@ function attachClicksToLinks() {
     })
 }
 
-function displayBrewery(e) {
+async function displayBrewery(e) {
     console.log(e.target)
     let id = e.target.dataset.id 
-    let main = document.getElementById('main')
-    main.innerHTML = ""
-    fetch(BASE_URL + `/breweries/${id}`)
-    .then(resp => resp.json())
-    .then(brew => {
-        main.innerHTML = `
-            <h2>${brew.name}</h2>
-            <h4> ${brew.location} </h4>
-            <hr>
-            <button id="delete-brewery" data-id="${brew.id}">Delete</button>
-        `
-        document.getElementById('delete-brewery').addEventListener('click', removeBrewery)
-    })
+    const data = await apiService.fetchBreweries(id)
+    const brewery = new Brewery(data)
+    main.innerHTML = brewery.renderBrewery()
+    document.getElementById('delete-brewery').addEventListener('click', removeBrewery)
 }
 
 function removeBrewery(e) {
