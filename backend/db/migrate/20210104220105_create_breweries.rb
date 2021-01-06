@@ -4,6 +4,7 @@ class CreateBreweries < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :location
       t.string :description
+      t.string :image_url
       t.boolean :outdoor_dining
       t.boolean :animal_friendly
 

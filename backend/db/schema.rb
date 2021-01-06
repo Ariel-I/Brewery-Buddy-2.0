@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2021_01_05_011508) do
     t.string "name"
     t.string "location"
     t.string "description"
+    t.string "image_url"
     t.boolean "outdoor_dining"
     t.boolean "animal_friendly"
     t.datetime "created_at", precision: 6, null: false
