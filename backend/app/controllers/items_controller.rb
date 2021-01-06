@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
 
   # GET /items/1
   def show
-    #item = Item.find_by(id: params[:id])
     render json: @item
   end
 
