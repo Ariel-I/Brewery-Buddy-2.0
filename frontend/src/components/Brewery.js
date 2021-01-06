@@ -20,13 +20,6 @@ class Brewery {
         </div>
         </div><br>
         `
-        
-    // `
-    //  <li>
-    //    <a href="#" data-id="${this.id}">${this.name}</a>
-    //    - ${this.location} - ${this.description}
-    //  </li>
-    //  `
     }
 
     renderBrewery() {
@@ -37,10 +30,9 @@ class Brewery {
         <p>Description: ${this.description}</p>
         <p>Outdoor Dinig Available?: ${this.outdoor_dining ? "No" : "Yes"}</p>
         <p>Animal Friendly?: ${this.animal_friendly ? "No" : "Yes"}</p>
-
-        <p> Beers: ${this.items.beverage} </p>
-
-        <button id="delete-brewery" data-id="${this.id}">Delete</button>
-    `
+        
+        <button id="delete-brewery" data-id="${this.id}">Delete Brewery</button>
+        `
     }
+
 }

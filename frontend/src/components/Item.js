@@ -4,5 +4,4 @@ class Item {
         this.food = data.food 
         this.merchandise = data.merchandise
     }
-    
 }

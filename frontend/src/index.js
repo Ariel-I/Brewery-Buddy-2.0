@@ -11,6 +11,16 @@ function bindEventListeners() {
     document.getElementById('brewery').addEventListener('click', renderBreweries)
 }
 
+async function renderItems() {
+    const items = await apiService.fetchItems()
+    main.innerHTML = ""
+    items.map(item => {
+        const newItem = new Item(item)
+        main.innerHTML += newItem.breweryItems
+    })
+}
+
+
 async function renderBreweries() {
     const breweries = await apiService.fetchBreweries()
     main.innerHTML = ""
@@ -81,6 +91,14 @@ async function displayBrewery(e) {
     const data = await apiService.fetchBrewery(id) 
     const brewery = new Brewery(data)
     main.innerHTML = brewery.renderBrewery()
+        brewery.items.map(item => 
+           main.innerHTML += item.breweryItems()
+           `
+           <p>${item.beverage}</p>
+           <p>${item.food}</p>
+           `
+       )
+
     document.getElementById('delete-brewery').addEventListener('click', removeBrewery)
 }
 
