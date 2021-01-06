@@ -4,4 +4,11 @@ class Item {
         this.food = data.food 
         this.merchandise = data.merchandise
     }
+
+    render() {
+        return `
+        <p>${this.beverage}</p>
+        <p>${this.food}</p>
+        `
+    }
 }

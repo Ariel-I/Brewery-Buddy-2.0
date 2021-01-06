@@ -16,7 +16,7 @@ async function renderItems() {
     main.innerHTML = ""
     items.map(item => {
         const newItem = new Item(item)
-        main.innerHTML += newItem.breweryItems
+        main.innerHTML += newItem.render()
     })
     //attachClicksToItems()
 }
@@ -30,6 +30,20 @@ async function renderBreweries() {
         main.innerHTML += newBrewery.render()
     })
     attachClicksToLinks() 
+}
+
+function displayItemForm() {
+    let itemDiv = document.querySelector("#new-item-form")
+    let html = `
+        <form>
+        <label>Beverage:</label>
+        <input type="text" id="beverage">
+        <label>Food:</label>
+        <input type="text" id="food">
+        <input type="submit">
+    `
+    itemDiv.innerHTML = html
+    document.querySelector('form').addEventListener('submit', createItem)
 }
 
 function displayBreweryForm() {
@@ -57,7 +71,9 @@ function displayBreweryForm() {
 
 function clearForm() {
     let formDiv = document.querySelector("#new-brewery-form")
+    let itemFormDiv = document.querySelector("#new-item-form")
     formDiv.innerHTML = ""
+    itemFormDiv.innerHTML = ""
 }
 
 async function createBrewery(e) {
@@ -79,6 +95,19 @@ async function createBrewery(e) {
     clearForm()
 }
 
+async function createItem(e) {
+    e.preventDefault()
+    let main = document.getElementById('main')
+    let item = {
+        beverage: e.target.querySelector("#beverage").value,
+        food: e.target.querySelector("#food")
+    }
+    let data = await apiService.fetchCreateItem(item)
+    let newItem = new Item(data)
+    main.innerHTML += newItem.render() //not right
+
+}
+
 function attachClicksToLinks() {
     const brews = document.querySelectorAll('.card-body a')
     brews.forEach(brewery => {
@@ -87,6 +116,7 @@ function attachClicksToLinks() {
 }
   
 async function displayBrewery(e) {
+    document.getElementById('item-form').addEventListener('click', displayItemForm)
     console.log(e.target)
     let id = e.target.dataset.id 
     const data = await apiService.fetchBrewery(id) 
@@ -96,12 +126,12 @@ async function displayBrewery(e) {
            main.innerHTML += 
            `
            <h4> Beers and Grub: </h4>
-           <p>${item.beverage}</p>
-           <p>${item.food}</p>
-
-           <button id="create-item" data-id="${item.id}">Add Item</button>
-           <button id="delete-item" data-id="${item.id}">Delete item</button>
+           <p>Beverages: ${item.beverage}</p>
+           <p>Food: ${item.food}</p>
            `
+           //<button id="create-item" data-id="${item.id}">Add Item</button>
+           //<button id="delete-item" data-id="${item.id}">Delete item</button>
+           
        )
 
     document.getElementById('delete-brewery').addEventListener('click', removeBrewery)
