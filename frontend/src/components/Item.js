@@ -7,8 +7,8 @@ class Item {
 
     render() {
         return `
-        <p>${this.beverage}</p>
-        <p>${this.food}</p>
+        <p>Beverage: ${this.beverage}</p>
+        <p>Food: ${this.food}</p>
         `
     }
 }

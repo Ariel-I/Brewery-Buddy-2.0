@@ -119,7 +119,6 @@ function attachClicksToLinks() {
 }
   
 async function displayBrewery(e) {
-    document.getElementById('item-form').addEventListener('click', displayItemForm)
     console.log(e.target)
     let id = e.target.dataset.id 
     const data = await apiService.fetchBrewery(id) 
@@ -136,7 +135,8 @@ async function displayBrewery(e) {
            //<button id="delete-item" data-id="${item.id}">Delete item</button>
            
        )
-           
+    document.getElementById('item-form').addEventListener('click', () => displayItemForm(id))   
+    clearForm()    
     document.getElementById('delete-brewery').addEventListener('click', removeBrewery)
 }
 
