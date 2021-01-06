@@ -11,12 +11,22 @@ let main = document.getElementById('main')
 
 const init = () => {
     bindEventListeners()
-    getBreweries()
+    renderBreweries()
 }
 
 function bindEventListeners() {
     document.getElementById('brewery-form').addEventListener('click', displayBreweryForm)
     document.getElementById('brewery').addEventListener('click', getBreweries)
+}
+
+
+async function renderBreweries() {
+    const breweries = await apiService.fetchBreweries()
+    main.innerHTML = ""
+    breweries.map(brewery => {
+        const newBrewery = new Brewery(brewery)
+        main.innerHTML += newBrewery.render()
+    })
 }
 
 
@@ -70,24 +80,7 @@ function createBrewery(e) {
     })
 }
 
-function getBreweries() {
-    let main = document.getElementById('main')
-    main.innerHTML = ""
-    fetch(BASE_URL + '/breweries')
-    .then(resp => resp.json())
-    
-    .then(breweries => {
-        breweries.map(brewery => {
-            main.innerHTML += `
-            <li>
-                <a href="#" data-id="${brewery.id}">${brewery.name}</a>
-                - ${brewery.location}
-            </li>
-            `
-        })
-    attachClicksToLinks()
-    })
-}
+
 
 function attachClicksToLinks() {
     const brews = document.querySelectorAll('li a')
