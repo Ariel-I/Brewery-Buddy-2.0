@@ -9,10 +9,10 @@ class ApiService {
         return data 
     }
 
-    async fetchBreweries(id) {
+    async fetchBrewery(id) {
         let resp = await fetch(this.baseURL + `/breweries/${id}`)
         let data = await resp.json()
         return data 
     }
-    
+
 }
