@@ -22,9 +22,9 @@ class Brewery {
         <h2>${this.name}</h2>
         <h4>${this.location}</h4>
         <hr>
-        <p>${this.description}</p>
-        <p>${this.outdoor_dining ? "No" : "Yes"}</p>
-        <p>${this.animal_friendly ? "No" : "Yes"}</p>
+        <p>Description: ${this.description}</p>
+        <p>Outdoor Dinig Available?: ${this.outdoor_dining ? "No" : "Yes"}</p>
+        <p>Animal Friendly?: ${this.animal_friendly ? "No" : "Yes"}</p>
         <button id="delete-brewery" data-id="${this.id}">Delete</button>
     `
     }
