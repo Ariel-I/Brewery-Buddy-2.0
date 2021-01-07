@@ -1,5 +1,7 @@
 class Item {
     constructor(data) {
+        this.id = data.id
+        this.brewery_id = data.brewery_id
         this.beverage = data.beverage
         this.food = data.food 
         this.merchandise = data.merchandise
