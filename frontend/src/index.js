@@ -99,6 +99,7 @@ async function createItem(e) {
     let data = await apiService.fetchCreateItem(item)
     let newItem = new Item(data)
     cardDiv.innerHTML += newItem.render() 
+    clearForm()
     //document.querySelectorAll("#delete-item").forEach(button => button.addEventListener('click', console.log("clicked")) )
 
 }
