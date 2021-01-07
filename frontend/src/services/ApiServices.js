@@ -40,8 +40,9 @@ class ApiService {
         let resp = await fetch(this.baseURL + `/breweries/${id}`, configObj)
     }
 
-    async fetchItems() {
-        let resp = await fetch(this.baseURL + '/items')
+
+    async fetchItem(id) {
+        let resp = await fetch(this.baseURL + `/items/${id}`)
         let data = await resp.json()
         return data 
     }

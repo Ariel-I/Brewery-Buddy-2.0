@@ -11,21 +11,10 @@ function bindEventListeners() {
     document.getElementById('brewery').addEventListener('click', renderBreweries)
 }
 
-async function renderItems() {
-    const items = await apiService.fetchItems()
-    main.innerHTML = ""
-    items.map(item => {
-        const newItem = new Item(item)
-        main.innerHTML += newItem.render()
-    })
-  //  document.getElementById('delete-item').addEventListener('click', removeItem)
-
-    //attachClicksToItems()
-}
-
-
 async function renderBreweries() {
     const breweries = await apiService.fetchBreweries()
+    let mainShow = document.getElementById("main-show")
+    mainShow.innerHTML = ""
     main.innerHTML = ""
     breweries.map(brewery => {
         const newBrewery = new Brewery(brewery)
@@ -110,6 +99,7 @@ async function createItem(e) {
     let data = await apiService.fetchCreateItem(item)
     let newItem = new Item(data)
     cardDiv.innerHTML += newItem.render() 
+    //document.querySelectorAll("#delete-item").forEach(button => button.addEventListener('click', console.log("clicked")) )
 
 }
 
@@ -122,30 +112,27 @@ function attachClicksToLinks() {
   
 async function displayBrewery(e) {
     let mainShow = document.getElementById("main-show")
-    console.log(e.target)
+    //console.log(e.target)
     let id = e.target.dataset.id 
     const data = await apiService.fetchBrewery(id) 
     const brewery = new Brewery(data)
-    mainShow.innerHTML = ""
+    main.innerHTML = ""
     mainShow.innerHTML = brewery.renderBrewery()
 
     let cardDiv = document.querySelector('.card-footer')
-        brewery.items.map(item => 
+        brewery.items.map(item => {
            cardDiv.innerHTML += 
            `
            <p>Beverages: ${item.beverage}</p>
            <p>Food: ${item.food}</p>
-           <button id="delete-item" data-id="${item.id}">Delete Item</button>
+           <button class="delete-item" data-id="${item.id}">Delete Item</button>
            `
-           //<button id="create-item" data-id="${item.id}">Add Item</button>
-          
-
-       )
+         document.querySelectorAll(".delete-item").forEach(button => button.addEventListener('click', removeItem))
+        })
+        
     document.getElementById('item-form').addEventListener('click', () => displayItemForm(id))   
     clearForm()    
     document.getElementById('delete-brewery').addEventListener('click', removeBrewery)
-  //  document.getElementById('delete-item').addEventListener('click', removeItem)
-
 }
 
 async function removeBrewery(e) {
@@ -161,6 +148,7 @@ async function removeItem(e) {
     const data = await apiService.fetchRemoveItem(id)
     .then(data => {
         renderBreweries()
+        //displayBrewery()
     })
 }
 
