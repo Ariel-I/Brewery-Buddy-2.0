@@ -44,18 +44,39 @@ class Brewery {
 
     renderBrewery() {
         return `
-        <h2>${this.name}</h2>
-        <br>
-        <h4>${this.location}</h4>
-        <hr>
-        <p>Description: ${this.description}</p>
-        <p>Outdoor Dinig Available?: ${this.outdoor_dining ? "No" : "Yes"}</p>
-        <p>Animal Friendly?: ${this.animal_friendly ? "No" : "Yes"}</p>
-
-        <button id="delete-brewery" data-id="${this.id}">Delete Brewery</button>
-        <br>
-        <hr>
+        <div class="card text-center">
+            <div class="card-header">
+                ${this.name}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">${this.location}</h5>
+                <p class="card-text">${this.description}</p>
+                <p>Outdoor Dinig Available?: ${this.outdoor_dining ? "No" : "Yes"}</p>
+                <p>Animal Friendly?: ${this.animal_friendly ? "No" : "Yes"}</p>
+                <button id="delete-brewery" data-id="${this.id}">Delete Brewery</button><br><br>
+            </div>
+            <div class="card-footer text-muted">
+               <h3> Saved Items: </h3>
+            </div>
+             <a href="#" class="btn btn-primary">Add Item</a>
+        </div>
         `
+        
+        
+        
+//        `
+//        <h2>${this.name}</h2>
+//        <br>
+//        <h4>${this.location}</h4>
+//        <hr>
+//        <p>Description: ${this.description}</p>
+//        <p>Outdoor Dinig Available?: ${this.outdoor_dining ? "No" : "Yes"}</p>
+//        <p>Animal Friendly?: ${this.animal_friendly ? "No" : "Yes"}</p>
+//
+//        <button id="delete-brewery" data-id="${this.id}">Delete Brewery</button>
+//        <br>
+//        <hr>
+//        `
     }
     
 

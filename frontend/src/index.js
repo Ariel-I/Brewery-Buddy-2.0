@@ -121,13 +121,17 @@ function attachClicksToLinks() {
 }
   
 async function displayBrewery(e) {
+    let mainShow = document.getElementById("main-show")
     console.log(e.target)
     let id = e.target.dataset.id 
     const data = await apiService.fetchBrewery(id) 
     const brewery = new Brewery(data)
-    main.innerHTML = brewery.renderBrewery()
+    main.innerHTML = ""
+    mainShow.innerHTML = brewery.renderBrewery()
+
+    let cardDiv = document.querySelector('.card-footer')
         brewery.items.map(item => 
-           main.innerHTML += 
+           cardDiv.innerHTML += 
            `
            <p>Beverages: ${item.beverage}</p>
            <p>Food: ${item.food}</p>
