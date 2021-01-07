@@ -121,7 +121,6 @@ function attachClicksToLinks() {
 }
   
 async function displayBrewery(e) {
-    
     console.log(e.target)
     let id = e.target.dataset.id 
     const data = await apiService.fetchBrewery(id) 
@@ -154,7 +153,6 @@ async function removeBrewery(e) {
 }
 
 async function removeItem(e) {
-    
     let id = e.target.dataset.id 
     const data = await apiService.fetchRemoveItem(id)
     .then(data => {
