@@ -39,8 +39,8 @@ class Brewery {
             <div class="card-body">
                 <h5 class="card-title">${this.location}</h5>
                 <p class="card-text">${this.description}</p>
-                <p>Outdoor Dinig Available?: ${this.outdoor_dining ? "No" : "Yes"}</p>
-                <p>Animal Friendly?: ${this.animal_friendly ? "No" : "Yes"}</p>
+                <p>Outdoor Dining Available: ${this.outdoor_dining ? "No" : "Yes"}</p>
+                <p>Animal Friendly: ${this.animal_friendly ? "No" : "Yes"}</p>
                 <button id="delete-brewery" data-id="${this.id}">Delete Brewery</button><br><br>
             </div>
             <div class="card-footer text-muted">

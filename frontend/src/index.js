@@ -40,10 +40,10 @@ function displayItemForm(id) {
         <form>
         <input type="hidden" id="brewery_id" value="${id}">
         <label>Beverage:</label>
-        <input type="text" id="beverage">
+        <input type="text" id="beverage"><br>
         <label>Food:</label>
-        <input type="text" id="food">
-        <input type="submit">
+        <input type="text" id="food"><br>
+        <input type="submit"><br>
         </form>
     `
     itemDiv.innerHTML = html
@@ -126,7 +126,7 @@ async function displayBrewery(e) {
     let id = e.target.dataset.id 
     const data = await apiService.fetchBrewery(id) 
     const brewery = new Brewery(data)
-    main.innerHTML = ""
+    mainShow.innerHTML = ""
     mainShow.innerHTML = brewery.renderBrewery()
 
     let cardDiv = document.querySelector('.card-footer')
