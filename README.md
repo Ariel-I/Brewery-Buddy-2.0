@@ -8,11 +8,11 @@
 
 -- You can find Brewery Buddy 2.0 in the github repository @ https://github.com/Ariel-I/Brewery-Buddy-2.0 --
 
-In order to properly run the program you must clone the github repository from -- git@github.com:Ariel-I/Brewery-Buddy-2.0.git -- . After cloning the repo be sure your terminal is in the right file by typing 'cd Brewery-Buddy-2.0' and hitting enter. 
+In order to properly run the program you must clone the github repository from git@github.com:Ariel-I/Brewery-Buddy-2.0.git. After cloning the repo be sure your terminal is in the right file by typing ```cd Brewery-Buddy-2.0``` and hitting enter. 
 
-Then move into the backend files using  ```cd backend```  and run - bundle install -
+Then move into the backend files using  ```cd backend```  and run ```bundle install```
 
-After the gems are installed run the program by running - rails s - in the terminal and open the index.html file in the browser.
+After the gems are installed run the program by running ```rails s``` in the terminal and open the index.html file in the browser.
 
 <h2> How to </h2>
 
