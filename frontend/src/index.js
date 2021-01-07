@@ -114,7 +114,7 @@ async function createItem(e) {
 }
 
 function attachClicksToLinks() {
-    const brews = document.querySelectorAll('.card-body a')
+    const brews = document.querySelectorAll('.card button')
     brews.forEach(brewery => {
         brewery.addEventListener('click', displayBrewery)
     })
