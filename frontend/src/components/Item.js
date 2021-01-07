@@ -14,6 +14,5 @@ class Item {
 
         <button id="delete-item" data-id="${this.id}">Delete item</button>
         `
-        
     }
 }
