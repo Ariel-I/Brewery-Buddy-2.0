@@ -18,7 +18,7 @@ async function renderItems() {
         const newItem = new Item(item)
         main.innerHTML += newItem.render()
     })
-    //document.getElementById('delete-item').addEventListener('click', removeItem)
+  //  document.getElementById('delete-item').addEventListener('click', removeItem)
 
     //attachClicksToItems()
 }
@@ -101,7 +101,7 @@ async function createBrewery(e) {
 
 async function createItem(e) {
     e.preventDefault()
-    let main = document.getElementById('main')
+    let cardDiv = document.querySelector('.card-footer')
     let item = {
         brewery_id: e.target.querySelector("#brewery_id").value,
         beverage: e.target.querySelector("#beverage").value,
@@ -109,7 +109,7 @@ async function createItem(e) {
     }
     let data = await apiService.fetchCreateItem(item)
     let newItem = new Item(data)
-    main.innerHTML += newItem.render() 
+    cardDiv.innerHTML += newItem.render() 
 
 }
 
@@ -144,7 +144,7 @@ async function displayBrewery(e) {
     document.getElementById('item-form').addEventListener('click', () => displayItemForm(id))   
     clearForm()    
     document.getElementById('delete-brewery').addEventListener('click', removeBrewery)
-    document.getElementById('delete-item').addEventListener('click', removeItem)
+  //  document.getElementById('delete-item').addEventListener('click', removeItem)
 
 }
 
