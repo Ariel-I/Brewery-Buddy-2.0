@@ -26,13 +26,15 @@ async function renderBreweries() {
 function displayItemForm(id) {
     let itemDiv = document.querySelector("#new-item-form")
     let html = `
-        <form>
-        <input type="hidden" id="brewery_id" value="${id}">
-        <label>Beverage:</label>
-        <input type="text" id="beverage"><br>
-        <label>Food:</label>
-        <input type="text" id="food"><br>
-        <input type="submit"><br>
+        <form class="text-black text-left"> 
+          <div class="form-group container">
+            <input type="hidden" class="form-control" id="brewery_id" value="${id}">
+            <label>Beverage:</label>
+            <input type="text" class="form-control" id="beverage" placeholder="Beer">
+            <label>Food:</label>
+            <input type="text" class="form-control" id="food" placeholder="Food"><br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
         </form>
     `
     itemDiv.innerHTML = html
@@ -42,20 +44,24 @@ function displayItemForm(id) {
 function displayBreweryForm() {
     let formDiv = document.querySelector("#new-brewery-form")
     let html = `
-        <form> 
+        <form class="text-white text-left"> 
+          <div class="form-group">
             <label>Name:</label>
-            <input type="text" id="name"><br>
+            <input type="text" class="form-control" id="name"  placeholder="Brewery Name">
             <label>Location:</label>
-            <input type="text" id="location"><br>
+            <input type="text" class="form-control" id="location" placeholder="Brewery Location">
             <label>Description:</label>
-            <input type="text" id="description"><br>
+            <input type="text" class="form-control" id="description" placeholder="Description">
             <label>Image URL</label>
-            <input type="text" id="image_url"><br>
+            <input type="text" class="form-control" id="image_url" placeholder="Image">
+          </div>
+          <div class="form-check">
             <label>Outdoor Dining</label>
             <input type="checkbox" id="outdoor-dining"><br>
             <label>Animal Friendly</label>
             <input type="checkbox" id="animal-friendly"><br>
-            <input type="submit">
+          </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     `
     formDiv.innerHTML = html

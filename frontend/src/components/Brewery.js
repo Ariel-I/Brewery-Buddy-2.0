@@ -46,7 +46,7 @@ class Brewery {
             <div class="card-footer text-muted">
                <h3> Saved Items: </h3>
             </div>
-             <a href="#" class="btn btn-primary" id="item-form">Add Item</a>
+             <button class="btn btn-primary" id="item-form">Add Item</button>
         </div>
         `
     }
