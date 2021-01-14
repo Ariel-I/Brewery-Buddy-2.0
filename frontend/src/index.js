@@ -16,12 +16,20 @@ async function renderBreweries() {
     let mainShow = document.getElementById("main-show")
     mainShow.innerHTML = ""
     main.innerHTML = ""
+    let sortedBreweries = breweries.sort((a,b) => {
+        let breweryA = a.name;
+        let breweryB = b.name;
+        return (breweryA < breweryB) ? -1 : (breweryA > breweryB) ? 1 : 0
+    })
+    console.log(sortedBreweries)
+
     breweries.map(brewery => {
         const newBrewery = new Brewery(brewery)
         main.innerHTML += newBrewery.render()
     })
     attachClicksToLinks() 
 }
+
 
 function displayItemForm(id) {
     let itemDiv = document.querySelector("#new-item-form")
@@ -106,8 +114,6 @@ async function createItem(e) {
     let newItem = new Item(data)
     cardDiv.innerHTML += newItem.render() 
     clearForm()
-    //document.querySelectorAll("#delete-item").forEach(button => button.addEventListener('click', console.log("clicked")) )
-
 }
 
 function attachClicksToLinks() {
@@ -119,7 +125,6 @@ function attachClicksToLinks() {
   
 async function displayBrewery(e) {
     let mainShow = document.getElementById("main-show")
-    //console.log(e.target)
     let id = e.target.dataset.id 
     const data = await apiService.fetchBrewery(id) 
     const brewery = new Brewery(data)
@@ -155,7 +160,6 @@ async function removeItem(e) {
     const data = await apiService.fetchRemoveItem(id)
     .then(data => {
         renderBreweries()
-        //displayBrewery()
     })
 }
 
